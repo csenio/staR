@@ -11,7 +11,7 @@ const tweetSchema = new Schema(
     comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }]
   },
   {
-    timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
+    timestamps: { createdAt: "created_at", index: true }
   }
 );
 

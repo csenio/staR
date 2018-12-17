@@ -45,24 +45,26 @@ function deletePost(creator, postId) {
 }
 
 function createFeed(user) {
-  // Tweet.findOne({ title: "firstTweet" })
-  //   .populate("creator")
-  //   .exec(function(err, tweet) {
-  //     if (err) return handleError(err);
-  //     console.log("The creator is %s", tweet.creator._id);
-  //     // prints "The author is Ian Fleming"
-  //   });
-  // me.following
-  // following = Users({ objectId: { $in: me.following }, tweets: 1 })
-  // var tweetIds = following.reduce((current, collector) => collector.push(...current.tweets))
-  // Tweets.find({ objectId: tweetIds, $limit: 100, $orderby: { createdAt: 1 } })
+  User.findOne({ name: user })
+    .distinct("following", {})
+    .exec((err, following) => {
+      if (err) console.log("error fetching 'following'", err);
+      console.log(following);
+      Tweet.find({ creator: { $in: following } })
+        .limit(2)
+        .sort({ created_at: -1 })
+        .exec((err, result) => {
+          console.log(result);
+        });
+    });
 }
 
+createFeed("timmy");
 // deletePost("timmy", "5c151ad865ce2f3494801d7c");
-// newPost("tom", "toms first post", "content1");
-// newPost("timmy", "timmys second post", "content2");
-// newPost("timmy", "timmys third post", "content3");
-// newPost("timmy", "timmys fourth post", "content4");
-// newPost("timmy", "timmys fifth post", "content5");
+// newPost("tom", "toms third post", "content1");
+// newPost("tom", "toms first post", "content");
+// newPost("tom", "toms second post", "content");
+// newPost("hans", "hans first post", "content4");
+// newPost("gustav", "gustavs second post", "content5");
 
 module.exports = router;

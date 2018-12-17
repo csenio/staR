@@ -27,7 +27,9 @@ function follow(follower, followee) {
   console.log(`${follower} now follows ${followee}`);
 }
 
-// follow("jesco", "timmy");
+// follow("timmy", "tom");
+// follow("timmy", "gustav");
+// follow("timmy", "hans");
 
 function newUser(name) {
   const user = new User({
