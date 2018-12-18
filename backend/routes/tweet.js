@@ -7,6 +7,24 @@ const Comment = require("../models/Comment");
 const User = require("../models/User");
 const ObjectId = mongoose.Types.ObjectId;
 
+router.get("/newPost", function(req, res, next) {
+  console.log(req);
+  // newPost(req.creator, req.title, req.content);
+  debugger;
+});
+
+router.get("/deletePost", function(req, res, next) {
+  console.log(req);
+  //deletePost(creator, postId)
+  debugger;
+});
+
+router.get("/createFeed", function(req, res, next) {
+  console.log(req);
+  //createFeed(user, length)
+  debugger;
+});
+
 function newPost(creator, title, content) {
   User.findOne({ name: creator })
     .then(user => {
@@ -44,27 +62,19 @@ function deletePost(creator, postId) {
     .catch(err => console.log("error", err));
 }
 
-function createFeed(user) {
+function createFeed(user, length) {
   User.findOne({ name: user })
     .distinct("following", {})
     .exec((err, following) => {
       if (err) console.log("error fetching 'following'", err);
       console.log(following);
       Tweet.find({ creator: { $in: following } })
-        .limit(2)
+        .limit(length)
         .sort({ created_at: -1 })
         .exec((err, result) => {
           console.log(result);
         });
     });
 }
-
-createFeed("timmy");
-// deletePost("timmy", "5c151ad865ce2f3494801d7c");
-// newPost("tom", "toms third post", "content1");
-// newPost("tom", "toms first post", "content");
-// newPost("tom", "toms second post", "content");
-// newPost("hans", "hans first post", "content4");
-// newPost("gustav", "gustavs second post", "content5");
 
 module.exports = router;
