@@ -3,8 +3,13 @@ import React, { Component } from "react";
 class Card extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      liked: false,
+    };
   }
+  toggleClass = () => {
+    this.setState({ liked: !this.state.liked });
+  };
   render() {
     return (
       <div className="card">
@@ -24,7 +29,10 @@ class Card extends Component {
         </div>
         <div className="bottom-bar">
           <div className="bottom-bar__icon bottom-like">
-            <i className="fas fa-heart" />
+            <i
+              className={this.state.liked ? 'heart--filled fas fa-heart' : "far fa-heart"}
+              onClick={this.toggleClass}
+            />
           </div>
           <div className="bottom-bar__icon bottom-comment">
             <i className="far fa-comment" />

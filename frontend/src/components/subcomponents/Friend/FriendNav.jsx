@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
-class HomeNav extends Component {
+class FriendNav extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,11 +11,11 @@ class HomeNav extends Component {
 
   render() {
     return (
-      <div className="home__navbar">
-        <NavLink activeClassName="active" to="/home/feed">
+      <div className="friend__navbar">
+        <NavLink exact activeClassName="active" to="/home/feed">
           <i className="far fa-square" />
         </NavLink>
-        <NavLink activeClassName="active" to="/home/trending">
+        <NavLink exact activeClassName="active" to="/home/trending">
           <i className="fas fa-fire" />
         </NavLink>
       </div>
@@ -23,4 +23,4 @@ class HomeNav extends Component {
   }
 }
 
-export default HomeNav;
+export default FriendNav;

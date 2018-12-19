@@ -6,12 +6,14 @@ import Nav from "./components/Nav";
 import Search from "./components/Search";
 import Notifications from "./components/Notifications";
 import Profile from "./components/Profile";
+import HomeFeed from "./components/subcomponents/Home/HomeFeed";
+import HomeTrending from "./components/subcomponents/Home/HomeTrending";
+import Settings from "./components/subcomponents/Profile/Settings";
+import Post from "./components/Post";
+import Friend from "./components/Friend";
 import Login from "./components/Login";
 import Register from "./components/Register";
-// import HomeFeed from "./components/subcomponents/Home/HomeFeed";
-// import HomeTrending from "./components/subcomponents/Home/HomeTrending";
 import ProtectedRoute from "./components/ProtectedRoute";
-
 import axios from "axios";
 import config from "./config";
 
@@ -94,6 +96,9 @@ class App extends Component {
           />
           {/* <Route exact path="/home/feed" component={HomeFeed} />
           <Route exact path="/home/trending" component={HomeTrending} /> */}
+          <Route exact path="/settings" component={Settings} />
+          <Route exact path="/post" component={Post} />
+          <Route exact path="/friend" component={Friend} />
         </Switch>
         <Nav />
       </div>

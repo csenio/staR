@@ -18,6 +18,11 @@ class Nav extends Component {
         <NavLink exact activeClassName="active" to="/search">
           <i className="fas fa-search" />
         </NavLink>
+        <div>
+          <button className="nav__button" to="/post">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
         <NavLink exact activeClassName="active" to="/notifications">
           <i className="fas fa-heart" />
         </NavLink>

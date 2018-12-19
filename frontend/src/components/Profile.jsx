@@ -4,6 +4,8 @@ import ProfileFeed from "./subcomponents/Profile/ProfileFeed";
 import ProfileLiked from "./subcomponents/Profile/ProfileLiked";
 import ProfileNav from "./subcomponents/Profile/ProfileNav";
 import ProfileInfo from "./subcomponents/Profile/ProfileInfo";
+import SettingsNav from "./subcomponents/Profile/SettingsNav";
+
 
 class Profile extends Component {
   constructor(props) {
@@ -13,6 +15,9 @@ class Profile extends Component {
   render() {
     return (
       <div className="Profile">
+        <div className="settings settings__nav__container">
+          <SettingsNav />
+        </div>
         <div className="profile__info profile__info__container">
           <ProfileInfo />
         </div>
