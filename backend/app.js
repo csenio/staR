@@ -1,19 +1,48 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 const mongoose = require("mongoose");
+const cors = require("cors");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+// const config = require("./config");
+
+const config = {
+  frontend: "http://localhost:3000",
+  backend: "http://localhost:4500",
+  mongodb: "localhost:27017"
+};
 
 mongoose.connect(
-  "mongodb://localhost:27017/clone",
+  `mongodb://${config.mongodb}/clone`,
   { useNewUrlParser: true }
 );
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-
 var app = express();
+
+app.use(
+  cors({
+    origin: `${config.frontend}`,
+    credentials: true
+  })
+);
+
+app.use(cookieParser());
+
+app.use(
+  session({
+    saveUninitialized: true,
+    resave: true,
+    secret: "my secret",
+    cookie: { maxAge: 600000 },
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 24 * 60 * 60
+    })
+  })
+);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -25,8 +54,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/", require("./routes/index"));
+app.use("/", require("./routes/users"));
 app.use("/", require("./routes/tweet"));
 
 // catch 404 and forward to error handler
