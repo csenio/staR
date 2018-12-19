@@ -10,8 +10,8 @@ class FriendSettingsNav extends Component {
   render() {
     return (
       <div className="friendsettings__navbar">
-        <div className="top__nav__back" >
-          <i class="fas fa-angle-left"></i>
+        <div className="top__nav__back">
+          <i className="fas fa-angle-left" />
         </div>
         <div className="friendsettings__navbar__username">
           <NavLink exact activeClassName="active" to="/friendsettings">
@@ -19,7 +19,6 @@ class FriendSettingsNav extends Component {
           </NavLink>
         </div>
       </div>
-
     );
   }
 }

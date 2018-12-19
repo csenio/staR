@@ -100,22 +100,76 @@ router.post("/auth", (req, res, next) => {
 //   });
 // });
 
-function follow(follower, followee) {
-  User.findOne({ name: followee }).then(res => {
-    console.log(`${follower} now follows ${followee}`);
-    User.update({ name: follower }, { $push: { following: res._id } }).catch(
-      err => console.log(err)
-    );
-
-    // debugger;
+router.post("/getUserInfo", (req, res, next) => {
+  getUserInfo(req.body.name, (result, error) => {
+    if (error) {
+      console.log(error);
+      res.status(404).end();
+    } else if (result) {
+      res.send(result);
+    }
   });
+});
 
+router.post("/follow", (req, res, next) => {
+  debugger;
+  follow(
+    req.session.currentUser.username,
+    req.body.name,
+    req.body.id,
+    (result, error) => {
+      if (error) {
+        console.log(error);
+        res.status(404).end();
+      } else if (result) {
+        res.send(result);
+      }
+    }
+  );
+});
+
+//clean up this mess
+function follow(follower, followee, id, cb) {
   User.findOne({ name: follower }).then(res => {
+    console.log(res);
+    res
+      .findOne({
+        following: mongoose.Types.ObjectId("5c18c7f97bc26763ec50bbe9")
+      })
+      .then(xxx => {
+        console.log(xxx);
+        debugger;
+      });
+    console.log(
+      res.following.includes(
+        mongoose.Types.ObjectId("5c18c7f97bc26763ec50bbe9")
+      )
+    );
+    debugger;
     console.log(`${followee} was followed by ${follower}`);
     User.update({ name: followee }, { $push: { followers: res._id } }).catch(
       err => console.log(err)
     );
   });
+
+  User.findOne({ name: followee }).then(user => {
+    console.log(user);
+    debugger;
+    User.update({ name: follower }, { $push: { following: user._id } })
+      .then(() => {
+        console.log(`${follower} now follows ${followee}`);
+        cb(true);
+      })
+      .catch(err => cb(false, err));
+  });
+}
+
+function getUserInfo(name, cb) {
+  User.findOne({ name: name })
+    .then(user => {
+      cb(user);
+    })
+    .catch(err => cb(false, err));
 }
 
 function newUser(name, password, email) {

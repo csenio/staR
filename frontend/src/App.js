@@ -61,6 +61,7 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
+          <Route path="/user/:name" component={Friend} />
           <Route
             exact
             path="/login"

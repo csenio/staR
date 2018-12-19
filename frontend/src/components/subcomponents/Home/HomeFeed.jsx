@@ -42,7 +42,7 @@ class HomeFeed extends Component {
                   : oneTweet.creator.profile
               }
               image={oneTweet.image}
-              key={oneTweet._id}
+              id={oneTweet.creator._id}
               title={oneTweet.title}
             />
           ))

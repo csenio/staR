@@ -6,7 +6,6 @@ import FriendNav from "./subcomponents/Friend/FriendNav";
 import FriendInfo from "./subcomponents/Friend/FriendInfo";
 import FriendSettingsNav from "./subcomponents/Friend/FriendSettingsNav";
 
-
 class Friend extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +18,7 @@ class Friend extends Component {
           <FriendSettingsNav />
         </div>
         <div className="friend__info friend__info__container">
-          <FriendInfo />
+          <FriendInfo name={this.props.match.params.name} />
         </div>
         <div className="friend__navbar friend__navbar__container">
           <FriendNav />
