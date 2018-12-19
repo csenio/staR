@@ -12,7 +12,7 @@ class Nav extends Component {
   render() {
     return (
       <nav>
-        <NavLink exact activeClassName="active" to="/">
+        <NavLink exact activeClassName="active" to="/home">
           <i className="fas fa-home" />
         </NavLink>
         <NavLink exact activeClassName="active" to="/search">

@@ -21,8 +21,9 @@ router.get("/deletePost", function(req, res, next) {
 
 router.get("/createFeed", function(req, res, next) {
   console.log(req);
-  //createFeed(user, length)
-  debugger;
+  createFeed(req.session.currentUser.username, 5, feed => {
+    res.send(feed);
+  });
 });
 
 function newPost(creator, title, content) {
@@ -62,17 +63,19 @@ function deletePost(creator, postId) {
     .catch(err => console.log("error", err));
 }
 
-function createFeed(user, length) {
+function createFeed(user, length, cb) {
   User.findOne({ name: user })
     .distinct("following", {})
     .exec((err, following) => {
       if (err) console.log("error fetching 'following'", err);
-      console.log(following);
+      // console.log(following);
       Tweet.find({ creator: { $in: following } })
         .limit(length)
         .sort({ created_at: -1 })
+        .populate("creator")
         .exec((err, result) => {
           console.log(result);
+          cb(result);
         });
     });
 }

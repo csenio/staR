@@ -1,0 +1,39 @@
+.profile__navbar {
+  width: 100vw;
+  position: fixed;
+  top: 25%;
+  left: 0;
+  height: 40px;
+  background-color: black;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profile__navbar a {
+  color: white;
+  text-decoration: none;
+  height: 100%;
+  width: 25%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profile__navbar .active {
+  border-top: 3px solid white;
+}
+/*# sourceMappingURL=profileNav.css.map */
