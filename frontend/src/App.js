@@ -8,6 +8,9 @@ import Notifications from "./components/Notifications";
 import Profile from "./components/Profile";
 import HomeFeed from "./components/subcomponents/Home/HomeFeed";
 import HomeTrending from "./components/subcomponents/Home/HomeTrending";
+import Settings from "./components/subcomponents/Profile/Settings";
+import Post from "./components/Post";
+import Friend from "./components/Friend";
 
 class App extends Component {
   render() {
@@ -20,6 +23,9 @@ class App extends Component {
           <Route exact path="/profile" component={Profile} />
           {/* <Route exact path="/home/feed" component={HomeFeed} />
           <Route exact path="/home/trending" component={HomeTrending} /> */}
+          <Route exact path="/settings" component={Settings} />
+          <Route exact path="/post" component={Post} />
+          <Route exact path="/friend" component={Friend} />
         </Switch>
         <Nav />
       </div>

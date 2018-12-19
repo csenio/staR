@@ -12,10 +12,10 @@ class ProfileNav extends Component {
   render() {
     return (
       <div className="profile__navbar">
-        <NavLink activeClassName="active" to="/home/feed">
-          <i className="fas fa-accessible-icon" />
+        <NavLink exact activeClassName="active" to="/home/feed">
+          <i className="far fa-square" />
         </NavLink>
-        <NavLink activeClassName="active" to="/home/trending">
+        <NavLink exact activeClassName="active" to="/home/trending">
           <i className="fas fa-fire" />
         </NavLink>
       </div>

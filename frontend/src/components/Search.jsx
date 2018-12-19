@@ -7,8 +7,8 @@ import SearchBar from "./subcomponents/SearchBar";
 
 class Search extends Component {
   state = {
-    query: '',
-    results: []
+    // query: '',
+    // results: []
   }
 
   // getInfo = () => {
@@ -21,17 +21,17 @@ class Search extends Component {
   //     })
   // }
 
-  handleInputChange = () => {
-    this.setState({
-      query: this.search.value
-    }, () => {
-      if (this.state.query && this.state.query.length > 1) {
-        if (this.state.query.length % 2 === 0) {
-          this.getInfo()
-        }
-      }
-    })
-  }
+  // handleInputChange = () => {
+  //   this.setState({
+  //     query: this.search.value
+  //   }, () => {
+  //     if (this.state.query && this.state.query.length > 1) {
+  //       if (this.state.query.length % 2 === 0) {
+  //         this.getInfo()
+  //       }
+  //     }
+  //   })
+  // }
 
   render() {
     return (

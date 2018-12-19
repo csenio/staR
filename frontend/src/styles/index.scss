@@ -1,0 +1,27 @@
+@import 'modules/home/home';
+@import 'modules/home/homeNav';
+@import 'modules/profile/profile';
+@import 'modules/profile/profileContent';
+@import 'modules/profile/profileInfo';
+@import 'modules/profile/profileNav';
+@import 'modules/profile/settings';
+@import 'modules/card';
+@import 'modules/navbar';
+@import 'modules/search';
+@import 'modules/friend/friend';
+@import 'modules/friend/friendContent';
+@import 'modules/friend/friendInfo';
+@import 'modules/friend/friendNav';
+@import 'modules/friend/friendSettings';
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: rgb(245, 245, 245);
+} 
+

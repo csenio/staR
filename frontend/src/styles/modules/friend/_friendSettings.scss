@@ -1,0 +1,56 @@
+.friendsettings div{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.friendsettings__nav__container {
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.87);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.friendsettings__navbar {
+  .top__nav__back {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .friendsettings__navbar__username {
+    height: 100%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+
+.friendsettings__navbar__username a  {
+  color: black;
+  height: 50%;
+  width: 25%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-decoration: none;
+}
+
+
+.friendsettings__navbar {
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.200);
+}
+
+

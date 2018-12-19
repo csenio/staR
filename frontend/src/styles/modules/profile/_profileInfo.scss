@@ -1,0 +1,126 @@
+.profile__info div{
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  .profile__info__top {
+    width: 100%;
+    height: 70%;
+  }
+  .profile__info__bio {
+    width: 100%;
+    height: 30%;
+  }
+}
+
+.profile__info__top {
+  .profile__info__pic {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .profile__info__social {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.profile__info__social {
+  .profile__info__social__stats {
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .profile__button__blue__container {
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.profile__info__social__stats {
+  .profile__info__stats {
+    width: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.profile__info__stats {
+  .profile__info__stats__numbers {
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .profile__info__stats__words {
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
+
+
+
+
+.profile__button__blue {
+  background-color: rgb(0, 179, 192);
+  color: white;
+  font-size: 14px;
+  height: 25px;
+  width: 215px;
+  border-radius: 50px;
+  border-color: transparent;
+}
+
+.profile__info__stats__numbers h3{
+  font-size: 12px;
+}
+
+.profile__info__stats__words h4{
+  font-size: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+.profile__personal__picture {
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
+  object-fit: cover;
+}
+
+.profile__info__bio {
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
+  .profile__personal__name {
+    width: 100%;
+    margin-left: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+
+
+.profile__personal__name {
+  font-size: 15px;
+}
+
