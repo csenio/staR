@@ -20,7 +20,7 @@ router.get("/deletePost", function(req, res, next) {
 });
 
 router.get("/createFeed", function(req, res, next) {
-  console.log(req);
+  // console.log(req);
   createFeed(req.session.currentUser.username, 5, feed => {
     res.send(feed);
   });
@@ -74,7 +74,7 @@ function createFeed(user, length, cb) {
         .sort({ created_at: -1 })
         .populate("creator")
         .exec((err, result) => {
-          console.log(result);
+          // console.log(result);
           cb(result);
         });
     });
