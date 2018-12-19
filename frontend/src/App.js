@@ -14,13 +14,17 @@ import Friend from "./components/Friend";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
+import NewPost from "./components/NewPost";
 import axios from "axios";
 import config from "./config";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      active: "home",
+      newPost: false
+    };
   }
 
   componentDidMount() {
@@ -42,6 +46,15 @@ class App extends Component {
         console.log("authenticated:", this.state.isAuthenticated);
       }
     });
+  };
+
+  newPostToggle = () => {
+    console.log("newpost popup is activated:", !this.state.newPost);
+    if (this.state.isAuthenticated) {
+      this.setState({
+        newPost: !this.state.newPost
+      });
+    }
   };
 
   render() {
@@ -100,7 +113,8 @@ class App extends Component {
           <Route exact path="/post" component={Post} />
           <Route exact path="/friend" component={Friend} />
         </Switch>
-        <Nav />
+        <NewPost newPost={this.newPostToggle} active={this.state.newPost} />
+        <Nav newPost={this.newPostToggle} />
       </div>
     );
   }

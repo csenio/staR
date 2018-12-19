@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
+import config from "../config";
 
 class Nav extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      active: "home"
-    };
+    this.state = { active: "home", newPost: true };
   }
 
   render() {
@@ -19,8 +19,8 @@ class Nav extends Component {
           <i className="fas fa-search" />
         </NavLink>
         <div>
-          <button className="nav__button" to="/post">
-            <i class="fas fa-plus"></i>
+          <button className="nav__button" onClick={this.props.newPost}>
+            <i className="fas fa-plus" />
           </button>
         </div>
         <NavLink exact activeClassName="active" to="/notifications">
