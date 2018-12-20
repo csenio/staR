@@ -7,7 +7,7 @@ class FriendFeed extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tweets: []
+      user: false
     };
   }
 
@@ -19,11 +19,12 @@ class FriendFeed extends Component {
       data: {
         name: this.props.name
       }
-    }).then(feedItems => {
-      console.log(feedItems);
-      debugger;
-      this.setState({ tweets: feedItems.data.tweets });
-      // console.log(feedItems.data[2]);
+    }).then(result => {
+      this.setState({
+        user: result.data
+        //profile: result.data.profile,
+        //name: result.data.name
+      });
     });
   };
 
@@ -34,20 +35,20 @@ class FriendFeed extends Component {
   render() {
     return (
       <div>
-        {this.state.tweets.length === 0 ? (
+        {!this.state.user ? (
           <p>loading...</p>
         ) : (
-          this.state.tweets.map(oneTweet => (
+          this.state.user.tweets.map(tweet => (
             <Card
-              creatorName={oneTweet.creator.name}
+              creatorName={this.state.user.name}
               creatorImage={
-                oneTweet.creator.profile === "none"
+                this.state.user.profile === "none"
                   ? "https://www.dts.edu/wp-content/uploads/sites/6/2018/04/Blank-Profile-Picture.jpg"
-                  : oneTweet.creator.profile
+                  : this.state.user.profile
               }
-              image={oneTweet.image}
-              id={oneTweet.creator._id}
-              title={oneTweet.title}
+              image={tweet.image}
+              id={this.state.user._id}
+              title={tweet.title}
             />
           ))
         )}

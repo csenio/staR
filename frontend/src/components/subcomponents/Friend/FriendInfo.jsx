@@ -83,7 +83,6 @@ class FriendInfo extends Component {
               <button
                 className="friend__button__blue" /*onClick={this.follow }*/
               >
-                {" "}
                 {this.state.following ? "following" : "follow"}
               </button>
             </div>
