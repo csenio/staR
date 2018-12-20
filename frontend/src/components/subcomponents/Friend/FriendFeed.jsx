@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import Card from "../Card";
 import axios from "axios";
 import config from "../../../config";
-// import HomeNav from "./subcomponents/HomeNav";
 
-class HomeFeed extends Component {
+class FriendFeed extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,19 +11,24 @@ class HomeFeed extends Component {
     };
   }
 
-  getfeed = () => {
+  getUserFeed = () => {
     axios({
-      method: "get",
+      method: "post",
       withCredentials: true,
-      url: `${config.backend}/createFeed`
+      url: `${config.backend}/getUserFeed`,
+      data: {
+        name: this.props.name
+      }
     }).then(feedItems => {
-      this.setState({ tweets: [...feedItems.data] });
-      console.log(feedItems.data[2]);
+      console.log(feedItems);
+      debugger;
+      this.setState({ tweets: feedItems.data.tweets });
+      // console.log(feedItems.data[2]);
     });
   };
 
   componentDidMount() {
-    this.getfeed();
+    this.getUserFeed();
   }
 
   render() {
@@ -52,4 +56,4 @@ class HomeFeed extends Component {
   }
 }
 
-export default HomeFeed;
+export default FriendFeed;

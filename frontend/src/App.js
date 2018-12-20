@@ -6,19 +6,25 @@ import Nav from "./components/Nav";
 import Search from "./components/Search";
 import Notifications from "./components/Notifications";
 import Profile from "./components/Profile";
+import HomeFeed from "./components/subcomponents/Home/HomeFeed";
+import HomeTrending from "./components/subcomponents/Home/HomeTrending";
+import Settings from "./components/subcomponents/Profile/Settings";
+import Post from "./components/Post";
+import Friend from "./components/Friend";
 import Login from "./components/Login";
 import Register from "./components/Register";
-// import HomeFeed from "./components/subcomponents/Home/HomeFeed";
-// import HomeTrending from "./components/subcomponents/Home/HomeTrending";
 import ProtectedRoute from "./components/ProtectedRoute";
-
+import NewPost from "./components/NewPost";
 import axios from "axios";
 import config from "./config";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      active: "home",
+      newPost: false
+    };
   }
 
   componentDidMount() {
@@ -42,10 +48,20 @@ class App extends Component {
     });
   };
 
+  newPostToggle = () => {
+    console.log("newpost popup is activated:", !this.state.newPost);
+    if (this.state.isAuthenticated) {
+      this.setState({
+        newPost: !this.state.newPost
+      });
+    }
+  };
+
   render() {
     return (
       <div className="App">
         <Switch>
+          <Route path="/user/:name" component={Friend} />
           <Route
             exact
             path="/login"
@@ -94,8 +110,12 @@ class App extends Component {
           />
           {/* <Route exact path="/home/feed" component={HomeFeed} />
           <Route exact path="/home/trending" component={HomeTrending} /> */}
+          <Route exact path="/settings" component={Settings} />
+          <Route exact path="/post" component={Post} />
+          <Route exact path="/friend" component={Friend} />
         </Switch>
-        <Nav />
+        <NewPost newPost={this.newPostToggle} active={this.state.newPost} />
+        <Nav newPost={this.newPostToggle} />
       </div>
     );
   }

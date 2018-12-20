@@ -1,13 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./styles/index.css";
-import "./styles/card.scss";
-import "./styles/navbar.scss";
-import "./styles/home/home.scss";
-import "./styles/home/homeNav.scss";
-import "./styles/search.scss";
-import "./styles/profile/profileNav.scss";
-import "./styles/profile/profile.scss";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";

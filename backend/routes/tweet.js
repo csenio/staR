@@ -7,26 +7,33 @@ const Comment = require("../models/Comment");
 const User = require("../models/User");
 const ObjectId = mongoose.Types.ObjectId;
 
-router.get("/newPost", function(req, res, next) {
+router.post("/newPost", function(req, res, next) {
   console.log(req);
-  // newPost(req.creator, req.title, req.content);
-  debugger;
+  newPost(
+    req.session.currentUser.username,
+    req.body.newPosttitle,
+    req.body.newPostcontent,
+    (success, err) => {
+      if (success) {
+        res.status(200).end();
+      }
+    }
+  );
 });
 
-router.get("/deletePost", function(req, res, next) {
+router.post("/deletePost", function(req, res, next) {
   console.log(req);
   //deletePost(creator, postId)
-  debugger;
 });
 
 router.get("/createFeed", function(req, res, next) {
-  console.log(req);
+  // console.log(req);
   createFeed(req.session.currentUser.username, 5, feed => {
     res.send(feed);
   });
 });
 
-function newPost(creator, title, content) {
+function newPost(creator, title, content, cb) {
   User.findOne({ name: creator })
     .then(user => {
       const tweet = new Tweet({
@@ -38,7 +45,12 @@ function newPost(creator, title, content) {
       });
 
       tweet.save(function(err) {
-        if (err) return console.log(err);
+        if (err) {
+          console.log("error creating new post", err);
+          cb(false, err);
+        } else {
+          cb(true);
+        }
       });
 
       User.updateOne({ name: creator }, { $push: { tweets: tweet._id } }).catch(
@@ -74,7 +86,7 @@ function createFeed(user, length, cb) {
         .sort({ created_at: -1 })
         .populate("creator")
         .exec((err, result) => {
-          console.log(result);
+          // console.log(result);
           cb(result);
         });
     });
