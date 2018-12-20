@@ -7,13 +7,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
-// const config = require("./config");
+const config = require("./config");
 
-const config = {
-  frontend: "http://localhost:3000",
-  backend: "http://localhost:4500",
-  mongodb: "localhost:27017"
-};
+console.log(config);
 
 mongoose.connect(
   `mongodb://${config.mongodb}/clone`,
@@ -54,7 +50,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", require("./routes/index"));
 app.use("/", require("./routes/users"));
 app.use("/", require("./routes/tweet"));
 
@@ -70,8 +65,19 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
-  res.render("error");
+  res.sendFile(path.join(__dirname, "build"));
 });
+
+if (config.environment === "production") {
+  console.log("production");
+  app.use(express.static(path.join(__dirname, "build")));
+  app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "build"));
+  });
+
+  app.get("*", function(req, res) {
+    res.redirect(config.backend);
+  });
+}
 
 module.exports = app;
