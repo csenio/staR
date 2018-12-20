@@ -172,6 +172,22 @@ function getUserInfo(name, cb) {
     .catch(err => cb(false, err));
 }
 
+// getUserFeed("timmy");
+
+function getUserFeed(user, cb) {
+  User.findOne({ name: user })
+    .populate("tweets")
+    .exec((err, tweets) => {
+      if (err) {
+        console.log("error fetching 'tweets'", err);
+        cb(false, err);
+      } else if (tweets) {
+        console.log(tweets);
+        cb(tweets);
+      }
+    });
+}
+
 function newUser(name, password, email) {
   const user = new User({
     _id: new mongoose.Types.ObjectId(),
@@ -188,8 +204,6 @@ function newUser(name, password, email) {
     if (err) return console.log(err);
   });
 }
-
-function login(username, password) {}
 
 // newUser("jesco");
 // newUser("timmy");
