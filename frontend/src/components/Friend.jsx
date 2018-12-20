@@ -15,7 +15,7 @@ class Friend extends Component {
     return (
       <div className="Profile">
         <div className="friendsettings friendsettings__nav__container">
-          <FriendSettingsNav />
+          <FriendSettingsNav name={this.props.match.params.name} />
         </div>
         <div className="friend__info friend__info__container">
           <FriendInfo name={this.props.match.params.name} />

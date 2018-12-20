@@ -186,13 +186,17 @@ function getUserInfo(name, cb) {
 function getUserFeed(user, cb) {
   User.findOne({ name: user })
     .populate("tweets")
-    .exec((err, tweets) => {
+    // .sort({ tweets: { created_at: -1 } })
+    .then((currentUser, err) => {
+      // currentUser.tweets.sort({ created_at: -1 });
+      console.log(currentUser);
+      // debugger;
       if (err) {
-        console.log("error fetching 'tweets'", err);
+        console.log("error fetching 'currentUser'", err);
         cb(false, err);
-      } else if (tweets) {
-        console.log(tweets);
-        cb(tweets);
+      } else if (currentUser) {
+        console.log(currentUser);
+        cb(currentUser);
       }
     });
 }
