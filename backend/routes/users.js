@@ -111,6 +111,17 @@ router.post("/getUserInfo", (req, res, next) => {
   });
 });
 
+router.post("/getUserFeed", (req, res, next) => {
+  getUserFeed(req.body.name, (result, error) => {
+    if (error) {
+      console.log(error);
+      res.status(404).end();
+    } else if (result) {
+      res.send(result);
+    }
+  });
+});
+
 router.post("/follow", (req, res, next) => {
   debugger;
   follow(
@@ -171,8 +182,6 @@ function getUserInfo(name, cb) {
     })
     .catch(err => cb(false, err));
 }
-
-// getUserFeed("timmy");
 
 function getUserFeed(user, cb) {
   User.findOne({ name: user })

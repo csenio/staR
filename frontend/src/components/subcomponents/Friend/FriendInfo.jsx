@@ -80,7 +80,9 @@ class FriendInfo extends Component {
               </div>
             </div>
             <div className="friend__button__blue__container">
-              <button className="friend__button__blue" onClick={this.follow}>
+              <button
+                className="friend__button__blue" /*onClick={this.follow }*/
+              >
                 {" "}
                 {this.state.following ? "following" : "follow"}
               </button>

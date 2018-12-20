@@ -24,7 +24,7 @@ class Friend extends Component {
           <FriendNav />
         </div>
         <div className="friend__content friend__content__container">
-          <FriendFeed />
+          <FriendFeed name={this.props.match.params.name} />
           {/* <Switch>
             <Route exact path="/Friend/feed" component={FriendFeed} />
             <Route exact path="/Friend/trending" component={FriendLiked} />
