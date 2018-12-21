@@ -32,7 +32,7 @@ app.use(
     saveUninitialized: true,
     resave: true,
     secret: "my secret",
-    cookie: { maxAge: 600000 },
+    cookie: { maxAge: 1000000000000 },
     store: new MongoStore({
       mongooseConnection: mongoose.connection,
       ttl: 24 * 60 * 60

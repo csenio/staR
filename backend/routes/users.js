@@ -94,11 +94,26 @@ router.post("/auth", (req, res, next) => {
   }
 });
 
+router.post("/search", (req, res, next) => {
+  search(req.body.name, result => {
+    res.send(result);
+  });
+  // debugger;
+});
+
 // router.get("/logout", (req, res, next) => {
 //   req.session.destroy(err => {
 //     res.end();
 //   });
 // });
+
+function search(name, cb) {
+  User.find({}).then(res => cb(res.filter(obj => obj.name.includes(name))));
+}
+
+// search("t");
+
+// debugger;
 
 router.post("/getUserInfo", (req, res, next) => {
   getUserInfo(req.body.name, (result, error) => {

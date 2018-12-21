@@ -1,35 +1,39 @@
-@import 'modules/home/home';
-@import 'modules/home/homeNav';
-@import 'modules/profile/profile';
-@import 'modules/profile/profileContent';
-@import 'modules/profile/profileInfo';
-@import 'modules/profile/profileNav';
-@import 'modules/profile/settings';
-@import 'modules/card';
-@import 'modules/navbar';
-@import 'modules/search';
-@import 'modules/friend/friend';
-@import 'modules/friend/friendContent';
-@import 'modules/friend/friendInfo';
-@import 'modules/friend/friendNav';
-@import 'modules/friend/friendSettings';
-<<<<<<< HEAD
-=======
-@import 'modules/login';
-@import 'modules/register';
-@import 'modules/post';
-@import 'modules/notifications/notifications';
-@import 'modules/notifications/notificationsNav';
->>>>>>> 9c1893ccfbd85c6d228ea025a00866fecfb08e8a
-
-
+@import "modules/home/home";
+@import "modules/home/homeNav";
+@import "modules/profile/profile";
+@import "modules/profile/profileContent";
+@import "modules/profile/profileInfo";
+@import "modules/profile/profileNav";
+@import "modules/profile/settings";
+@import "modules/card";
+@import "modules/navbar";
+@import "modules/search";
+@import "modules/friend/friend";
+@import "modules/friend/friendContent";
+@import "modules/friend/friendInfo";
+@import "modules/friend/friendNav";
+@import "modules/friend/friendSettings";
+@import "modules/login";
+@import "modules/register";
+@import "modules/post";
+@import "modules/notifications/notifications";
+@import "modules/notifications/notificationsNav";
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
-  background-color: rgb(245, 245, 245);
-} 
+    font-family: "Open Sans", sans-serif;
+    background-color: rgb(245, 245, 245);
+}
 
+.search__results__container {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px; // position: fixed; // top: 40;
+}
