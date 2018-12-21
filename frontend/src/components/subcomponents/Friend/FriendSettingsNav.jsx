@@ -15,7 +15,7 @@ class FriendSettingsNav extends Component {
         </div>
         <div className="friendsettings__navbar__username">
           <NavLink exact activeClassName="active" to="/friendsettings">
-            <p>user.name</p>
+            <p>{this.props.name}</p>
           </NavLink>
         </div>
       </div>
