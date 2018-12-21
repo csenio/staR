@@ -48,12 +48,12 @@ class ProfileInfo extends Component {
               </div>
             </div>
             <div className="profile__button__blue__container">
-              <button className="profile__button__blue">Follow</button>
+              <button className="profile__button__blue">Max Musterman</button>
             </div>
           </div>
         </div>
         <div className="profile__info__bio">
-          <p className="profile__personal__name">Max Musterman</p>
+          <p className="profile__personal__name"></p>
         </div>
       </div>
     );

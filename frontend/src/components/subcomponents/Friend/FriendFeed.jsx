@@ -21,7 +21,8 @@ class FriendFeed extends Component {
       }
     }).then(result => {
       this.setState({
-        user: result.data
+        user: result.data,
+        tweets: result.data.tweets.sort()
         //profile: result.data.profile,
         //name: result.data.name
       });

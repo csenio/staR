@@ -17,6 +17,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import NewPost from "./components/NewPost";
 import axios from "axios";
 import config from "./config";
+import "./styles/index.css";
 
 class App extends Component {
   constructor(props) {
@@ -62,6 +63,7 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route path="/user/:name" component={Friend} />
+          <Route path="/register" component={Register} />
           <Route
             exact
             path="/login"
@@ -72,13 +74,6 @@ class App extends Component {
                 isAuthenticated={this.state.isAuthenticated}
               />
             )}
-          />
-          <ProtectedRoute
-            exact
-            auth={this.auth}
-            isAuthenticated={this.state.isAuthenticated}
-            path="/register"
-            component={Register}
           />
           <ProtectedRoute
             exact
@@ -113,6 +108,7 @@ class App extends Component {
           <Route exact path="/settings" component={Settings} />
           <Route exact path="/post" component={Post} />
           <Route exact path="/friend" component={Friend} />
+          <Route exact path="/notifications" component={Notifications} />
         </Switch>
         <NewPost newPost={this.newPostToggle} active={this.state.newPost} />
         <Nav newPost={this.newPostToggle} />

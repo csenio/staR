@@ -32,13 +32,15 @@ class FriendInfo extends Component {
         id: this.state.data._id
       }
     }).then(userInfo => {
-      this.setState({ userLoaded: true, ...userInfo });
+      this.setState({ userLoaded: true });
     });
   };
 
   render() {
     console.log(this.state);
-    return this.state.userLoaded ? (
+    console.log(this.state.data);
+    // debugger;
+    return this.state.userLoaded && this.state.data.tweets ? (
       <div className="friend__info ">
         <div className="friend__info__top">
           <div className="friend__info__pic">
@@ -80,9 +82,7 @@ class FriendInfo extends Component {
               </div>
             </div>
             <div className="friend__button__blue__container">
-              <button
-                className="friend__button__blue" /*onClick={this.follow }*/
-              >
+              <button className="friend__button__blue" onClick={this.follow}>
                 {this.state.following ? "following" : "follow"}
               </button>
             </div>

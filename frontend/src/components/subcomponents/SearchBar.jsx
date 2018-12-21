@@ -6,16 +6,17 @@ class SearchBar extends Component {
     this.state = {};
   }
 
+  handleChange = e => {
+    this.props.getMatches(e.currentTarget.value);
+    // debugger;
+  };
+
   render() {
     return (
       <div>
-        <input
-          placeholder="Search..."
-          ref={input => this.search = input}
-          onChange={this.handleInputChange}
-        />
+        <input placeholder="Search..." onChange={this.handleChange} />
         <p>{this.state.query}</p>
-      </div >
+      </div>
     );
   }
 }
