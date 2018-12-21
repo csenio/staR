@@ -138,7 +138,7 @@ router.post("/getUserFeed", (req, res, next) => {
 });
 
 router.post("/follow", (req, res, next) => {
-  debugger;
+  // debugger;
   follow(
     req.session.currentUser.username,
     req.body.name,
@@ -157,21 +157,6 @@ router.post("/follow", (req, res, next) => {
 //clean up this mess
 function follow(follower, followee, id, cb) {
   User.findOne({ name: follower }).then(res => {
-    console.log(res);
-    res
-      .findOne({
-        following: mongoose.Types.ObjectId("5c18c7f97bc26763ec50bbe9")
-      })
-      .then(xxx => {
-        console.log(xxx);
-        debugger;
-      });
-    console.log(
-      res.following.includes(
-        mongoose.Types.ObjectId("5c18c7f97bc26763ec50bbe9")
-      )
-    );
-    debugger;
     console.log(`${followee} was followed by ${follower}`);
     User.update({ name: followee }, { $push: { followers: res._id } }).catch(
       err => console.log(err)
@@ -180,7 +165,7 @@ function follow(follower, followee, id, cb) {
 
   User.findOne({ name: followee }).then(user => {
     console.log(user);
-    debugger;
+
     User.update({ name: follower }, { $push: { following: user._id } })
       .then(() => {
         console.log(`${follower} now follows ${followee}`);
