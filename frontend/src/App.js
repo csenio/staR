@@ -62,6 +62,7 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route path="/user/:name" component={Friend} />
+          <Route path="/register" component={Register} />
           <Route
             exact
             path="/login"
@@ -72,13 +73,6 @@ class App extends Component {
                 isAuthenticated={this.state.isAuthenticated}
               />
             )}
-          />
-          <ProtectedRoute
-            exact
-            auth={this.auth}
-            isAuthenticated={this.state.isAuthenticated}
-            path="/register"
-            component={Register}
           />
           <ProtectedRoute
             exact

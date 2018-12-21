@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Inputfield from "./subcomponents/Login/Inputfield";
 import axios from "axios";
 import config from "../config";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -53,6 +53,7 @@ class Login extends Component {
           <Inputfield type="password" action="Login" submit={this.submit} />
           <button onClick={this.login}>login</button>
         </div>
+        <Link to="/register">register</Link>
       </div>
     );
   }
