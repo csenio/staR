@@ -13,7 +13,11 @@
 @import 'modules/friend/friendInfo';
 @import 'modules/friend/friendNav';
 @import 'modules/friend/friendSettings';
-@import 'modules/index';
+@import 'modules/login';
+@import 'modules/register';
+@import 'modules/post';
+@import 'modules/notifications/notifications';
+@import 'modules/notifications/notificationsNav';
 
 
 * {

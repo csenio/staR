@@ -3,6 +3,7 @@ import Inputfield from "./subcomponents/Login/Inputfield";
 import axios from "axios";
 import config from "../config";
 import { Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -44,17 +45,37 @@ class Login extends Component {
     return this.props.isAuthenticated ? (
       <Redirect to={{ pathname: "/home" }} />
     ) : (
-      <div className="login">
-        {this.state.error && !this.state.success && (
-          <div>ERROR: {this.state.error}</div>
-        )}
-        <div>
-          <Inputfield type="name" action="Login" submit={this.submit} />
-          <Inputfield type="password" action="Login" submit={this.submit} />
-          <button onClick={this.login}>login</button>
+        <div className="login">
+          {this.state.error && !this.state.success && (
+            <div>ERROR: {this.state.error}</div>
+          )}
+          <div className="login__content">
+            <div className="login__content__containers login__content__title">
+              <img src={require("../images/logo.png")} alt="" className="login__content__title__pic" />
+              <h3>Clone</h3>
+            </div>
+            <div className="login__content__containers login__content__input__name">
+              <Inputfield type="name" action="Login" submit={this.submit} />
+            </div>
+            <div className="login__content__containers login__content__input__password">
+              <Inputfield type="password" action="Login" submit={this.submit} />
+            </div>
+            <div className="login__content__containers login__content__bottom">
+              <div className="login__content__button">
+                <button onClick={this.login} className="login__button">Login</button>
+              </div>
+              <div className="login__content__register">
+                <h5>Don't have an account?</h5>
+                <NavLink exact activeClassName="active" to="/register">
+                  <h5>
+                    Register here
+                  </h5>
+                </NavLink>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    );
+      );
   }
 }
 

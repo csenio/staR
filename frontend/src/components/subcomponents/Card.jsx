@@ -23,8 +23,12 @@ class Card extends Component {
               alt=""
             />
             <div className="card__profile__text">
-              <h3 className="card__profile__title">{this.props.title}</h3>
-              <p className="card__profile__name">{this.props.creatorName}</p>
+              <div className="card__profile__text__top">
+                <h3 className="card__profile__title">{this.props.title}</h3>
+              </div>
+              <div className="card__profile__text__bottom">
+                <p className="card__profile__name">{this.props.creatorName}</p>
+              </div>
             </div>
           </div>
         </Link>
