@@ -30,14 +30,29 @@
 
 .card__profile__text {
   margin-left: 5px;
+}
+
+
+.card__profile__text {
+  .card__profile__title {
+  width: 100%;
+  height: 80%;
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  }
+  .card__profile__name {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
 }
 
 .card__profile__title {
-  font-size: 18px;
+  font-size: 13.5px;
+  color: black;
 }
 
 .card__profile__name {

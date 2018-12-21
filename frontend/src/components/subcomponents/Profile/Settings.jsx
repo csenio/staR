@@ -9,7 +9,13 @@ class Settings extends Component {
   render() {
     return (
       <div className="setting__logout">
-        <button >Log-out</button>
+        <div className="setting__containers setting__title">
+          <img src={require("../../../images/logo.png")} alt="" className="setting__title__pic" />
+          <h3>Clone</h3>
+        </div>
+        <div className="setting__containers setting__button">
+          <button className="setting__logout__button">Log-out</button>
+        </div>
       </div>
     );
   }
