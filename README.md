@@ -1,4 +1,6 @@
-# Social Network Clone
+![staR](https://i.imgur.com/S2Fiv0z.jpg)
 
+
+# staR
 ---
-## A very basic social network using React, NodeJS, Express, MongoDB
+staR is a social network built using MongoDB, React, Node and Express
