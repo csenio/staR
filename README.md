@@ -2,5 +2,5 @@
 
 
 # staR
----
+
 staR is a social network built using MongoDB, React, Node and Express
